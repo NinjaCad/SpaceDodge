@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Caedmon Julian</title>
+  <meta name="description" content="Caedmon Julian - Computer Science student and developer. Explore my portfolio in web development, game design, and more about me.">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+  <style>
+    body {
+      background: linear-gradient(to right, #111, #1a1f2c);
+      color: #aaa;
+      font-family: Verdana, Geneva, sans-serif;
+      margin: 0;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    header {
+      background: linear-gradient(to right, #111, #1a1f2c);
+      position: fixed;
+      width: 100%;
+      z-index: 10;
+      top: 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+      border-bottom: 1px solid #333;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #f2f2f2;
+      padding: 14px 20px;
+      display: block;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s, background 0.3s;
+    }
+    nav a:hover {
+      background: linear-gradient(to right, #2a3f5f, #1f2b45);
+      color: #ddd;
+    }
+    main {
+      max-width: 1000px;
+      margin: 100px auto 50px auto;
+      padding: 0 20px;
+    }
+    section {
+      margin-bottom: 60px;
+    }
+    #home {
+      padding: 120px 0 120px 0;
+      text-align: center;
+    }
+    #home h1 {
+      background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+      font-size: 3rem;
+      margin: 0;
+    }
+    #home p {
+      color: #bbb;
+      font-size: 1.2rem;
+      margin-top: 20px;
+    }
+    #content {
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+    }
+    h2, h3 {
+      text-align: center;
+      background: linear-gradient(to right, #eee, #dde);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .card {
+      background: linear-gradient(160deg, #1a1a1a, #222428);
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+      gap: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+      transition: 0.3s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      text-align: center;
+      flex-flow: row wrap;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 12px #00d2ff60;
+      border-color: #00d2ff;
+    }
+    .card img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      border-radius: 8px;
+      border: 1px solid #444;
+      background: #fff;
+    }
+    .card div {
+      flex: auto;
+    }
+    a {
+      color: #00d2ff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .contact {
+      flex-direction: column;
+      align-items: center;    
+      text-align: center;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #777;
+      border-top: 1px solid #333;
+      background: linear-gradient(to right, #111, #1a1f2c);
+    }
+    @media (max-width: 600px) {
+      #home h1 {
+        font-size: 3rem;
+      }
+    video {
+      max-width: 90%;
+      height: auto;
+      border: 2px solid #2c3e50;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section id="home">
+      <h1>Space Dodge</h1>
+    </section>
+
+    <section id="content">
+      <div class="content-container">
+        <div id="unity-container" class="unity-desktop">
+          <canvas id="unity-canvas" width=960 height=600></canvas>
+          <div id="unity-loading-bar">
+            <div id="unity-logo"></div>
+            <div id="unity-progress-bar-empty">
+              <div id="unity-progress-bar-full"></div>
+            </div>
+          </div>
+          <!--<div id="unity-mobile-warning">
+            WebGL builds are not supported on mobile devices.
+          </div>-->
+          <div id="unity-footer">
+            <div id="unity-webgl-logo"></div>
+            <div id="unity-fullscreen-button"></div>
+            <!--<div id="unity-build-title">Time</div>-->
+          </div>
+        </div>
+        <div class="center-container" style="padding-top: 100px;">
+          <h2 class="w3-wide">Instructions</h2>
+          <div class="card">
+              <p class="w3-justify">
+                Press 1, 2, or 3 to pick a character.<br>
+                Use the arrow keys to make the player move.<br>
+                Press the space bar when you finish moving the character.<br>
+                Press 1, 2, or 3 to pick another character.<br>
+                Watch as your last character has saved it's movements.<br>
+                Stand on the red button to open doors.<br>
+                Stand on green button to move on to the next level.<br>
+              </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/Time.loader.js";
+      var config = {
+        dataUrl: buildUrl + "/Time.data",
+        frameworkUrl: buildUrl + "/Time.framework.js",
+        codeUrl: buildUrl + "/Time.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "NinjaCad",
+        productName: "Time",
+        productVersion: "1.0",
+      };
+
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      var mobileWarning = document.querySelector("#unity-mobile-warning");
+
+      // By default Unity keeps WebGL canvas render target size matched with
+      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
+      // Set this to false if you want to decouple this synchronization from
+      // happening inside the engine, and you would instead like to size up
+      // the canvas DOM size and WebGL render target sizes yourself.
+      // config.matchWebGLToCanvasSize = false;
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        container.className = "unity-mobile";
+        // Avoid draining fillrate performance on mobile devices,
+        // and default/override low DPI mode on mobile browsers.
+        config.devicePixelRatio = 1;
+        mobileWarning.style.display = "block";
+        setTimeout(() => {
+          mobileWarning.style.display = "none";
+        }, 5000);
+      } else {
+        canvas.style.width = "960px";
+        canvas.style.height = "600px";
+      }
+      loadingBar.style.display = "block";
+
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          progressBarFull.style.width = 100 * progress + "%";
+        }).then((unityInstance) => {
+          loadingBar.style.display = "none";
+          fullscreenButton.onclick = () => {
+            unityInstance.SetFullscreen(1);
+          };
+        }).catch((message) => {
+          alert(message);
+        });
+      };
+      document.body.appendChild(script);
+    </script>
+  </main>
+
+  <footer>
+    <p>
+      © 2025 Caedmon Julian. All rights reserved.<br>
+      Hosted using
+      <a href="https://www.github.com/NinjaCad/Dodge-Pages" target="_blank">Github Pages</a>
+    </p>
+  </footer>
+</body>
+</html>
