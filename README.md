@@ -1,33 +1,38 @@
-# Space Dodge (Unity WebGL Game)
+## 🚀 *Space Dodge*
 
-This repository contains a **Unity WebGL build** of a game (served as a static website).
+### 🎮 Overview
 
-## Play / run
-### Option 1: Open the GitHub Pages site
-If GitHub Pages is enabled for this repo, you can play it directly in your browser.
+*Endless Space Runner* is a 2D survival game where you control a ship moving vertically while avoiding incoming enemies and obstacles. The game gets harder over time as enemies spawn faster and in greater variety.
 
-### Option 2: Run locally (recommended for testing)
-Because this is a WebGL build, it should be served from a local web server (opening `index.html` directly may fail due to browser restrictions).
+---
 
-#### Using Python
-```bash
-python -m http.server 8000
-```
-Then open: http://localhost:8000
+## 🕹️ How to Play
 
-#### Using Node (any static server)
-```bash
-npx serve
-```
+* Use **W / S** or **Up / Down arrows** to move
+* Stay within the boundaries
+* Avoid all enemies and obstacles
+* Survive as long as possible
 
-## Repository structure
-- **`index.html`** — Main page that loads the Unity WebGL build.
-- **`Build/`** — Unity WebGL build outputs (multiple build variants appear to be present):
-  - `Dodge for GitHub.*` (e.g., `.data`, `.framework.js`, `.loader.js`, `.wasm`)
-  - `Dodge v1.*.gz` and `Dodge v2.*.gz` (compressed build artifacts)
-- **`TemplateData/`** — Unity WebGL template assets (CSS/images for the loader UI).
-- **`images/`** — Site images (currently includes `favicon.png`).
-- **`Game.zip`** — A zipped game/build artifact.
+---
 
-## Overview
-This repo is a static site wrapper around one (or more) Unity WebGL exports. The HTML page sets up a canvas, loads the Unity loader script, and points it at the build artifacts in `Build/`.
+## ⚙️ Features
+
+* **Player movement with collision detection** using raycasting
+* **Increasing difficulty** (spawn rate speeds up over time)
+* **Multiple enemy types** (normal, fast, large)
+* **Randomized spawning system** for enemies
+* **Environmental obstacles** (different planet types)
+* **Timed spawning system** using counters and timers
+
+---
+
+## 🧠 What I Learned
+
+* Using **raycasting** to prevent movement through walls
+* Creating a **spawning system with timers**
+* Managing **randomized gameplay elements**
+* Scaling difficulty over time
+* Organizing gameplay into separate scripts (player vs spawner)
+* Score system using text on screen
+
+---
